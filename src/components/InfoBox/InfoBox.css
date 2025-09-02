@@ -1,0 +1,24 @@
+.cardContainer{
+    display: flex;
+    justify-content: center;
+}
+.weather-icon{
+    background-color: #c7bdbd;
+    display: flex;
+    justify-content: center;
+    height: 150px;
+    
+}
+.timeUtils{
+    display: flex;  
+    flex-direction: column; 
+    justify-content: center;
+    align-items: flex-end;
+}
+.timeUtils h2,
+.timeUtils p {
+    margin: 0;       /* remove default space */
+    padding: 0;      /* remove extra padding */
+    line-height: 1.2;
+    color:rgb(43, 36, 36);
+}

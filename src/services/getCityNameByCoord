@@ -1,0 +1,21 @@
+// getCityNameByCoords.js
+const API_URL = "https://api.openweathermap.org/geo/1.0/reverse";
+const API_KEY = import.meta.env.VITE_WEATHER_API_KEY; // Your API key from .env
+export const getCityNameByCoord= async (lat, lon) => {
+  try {
+    const response = await fetch(`${API_URL}?lat=${lat}&lon=${lon}&appid=${API_KEY}`);
+    const jsonResponse = await response.json();
+
+    if (!Array.isArray(jsonResponse) || jsonResponse.length === 0) {
+      return { error: "No location found" };
+    }
+
+    let cityName=jsonResponse[0].name;
+     cityName = cityName.replace(/\b(Mandal|District|Municipality)\b/gi, "").trim();
+     cityName = cityName.split(" ")[0];
+    return  cityName ; // Only return city name
+  } catch (error) {
+    console.error("Error getting city name:", error);
+    return { error: "Failed to fetch city name" };
+  }
+};
